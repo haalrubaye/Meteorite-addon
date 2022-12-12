@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "meteorite",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for the Meteor addons.",
+  "name": "Meteorite",
+  "description": "An addon for Meteor.",
   "authors": [
-    "seasnail"
+    "Haalrubaye"
   ],
   "contact": {
     "repo": "https://github.com/MeteorDevelopment/meteor-addon-template"
@@ -18,7 +18,7 @@
     ]
   },
   "mixins": [
-    "addon.mixins.json"
+    "meteorite.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "225,25,25"
