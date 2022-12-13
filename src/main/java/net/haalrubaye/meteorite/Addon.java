@@ -12,6 +12,7 @@ import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
 import net.haalrubaye.meteorite.modules.JumpBridge;
+import net.haalrubaye.meteorite.modules.QuickSwitch;
 import org.slf4j.Logger;
 
 public class Addon extends MeteorAddon {
@@ -27,6 +28,7 @@ public class Addon extends MeteorAddon {
         Modules.get().add(new AutoBridge());
         Modules.get().add(new JumpBridge());
         Modules.get().add(new BlockPath());
+        Modules.get().add(new QuickSwitch());
 
         // Commands
         Commands.get().add(new CommandExample());
