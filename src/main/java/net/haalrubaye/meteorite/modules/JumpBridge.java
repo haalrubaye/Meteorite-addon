@@ -63,8 +63,13 @@ public class JumpBridge extends Module {
     private int timer;
     private float yawDirection;
 
+    boolean turn;
+    int blockCount;
+
     @Override
     public void onActivate() {
+        turn = true;
+        blockCount = 0;
         yawDirection = getSmartYawDirection();
         timer = 0;
         mc.options.attackKey.setPressed(false);
@@ -88,7 +93,7 @@ public class JumpBridge extends Module {
         .name("jump-period")
         .description("The number of blocks between a jump.")
         .defaultValue(6)
-        .min(2)
+        .min(1)
         .sliderMax(40)
         .build()
     );
@@ -129,8 +134,6 @@ public class JumpBridge extends Module {
         .build()
     );
 
-    boolean turn = true;
-    int blockCount = 0;
     @EventHandler
 
     private void onTick(TickEvent.Pre event) {
@@ -189,7 +192,7 @@ public class JumpBridge extends Module {
     }
 
     private float getSmartYawDirection() {
-        float yaw = Math.round((mc.player.getYaw() + 1f) / 90f) * 90f;
+        float yaw = Math.round((mc.player.getYaw() + 1f) / 45f) * 45f;
 //        yaw += 180f;
 //        if (yaw >= 360f){
 //            return (yaw - 360f);

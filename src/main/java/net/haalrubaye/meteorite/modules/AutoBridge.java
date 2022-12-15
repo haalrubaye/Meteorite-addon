@@ -172,7 +172,7 @@ public class AutoBridge extends Module {
     }
 
     private float getSmartYawDirection() {
-        float yaw = Math.round((mc.player.getYaw() + 1f) / 90f) * 90f;
+        float yaw = Math.round((mc.player.getYaw() + 1f) / 45f) * 45f;
 //        yaw += 180f;
 //        if (yaw >= 360f){
 //            return (yaw - 360f);

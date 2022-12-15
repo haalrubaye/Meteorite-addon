@@ -2,8 +2,7 @@ package net.haalrubaye.meteorite;
 
 import net.haalrubaye.meteorite.commands.CommandExample;
 import net.haalrubaye.meteorite.hud.HudExample;
-import net.haalrubaye.meteorite.modules.AutoBridge;
-import net.haalrubaye.meteorite.modules.BlockPath;
+import net.haalrubaye.meteorite.modules.*;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.systems.commands.Commands;
@@ -11,8 +10,6 @@ import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
-import net.haalrubaye.meteorite.modules.JumpBridge;
-import net.haalrubaye.meteorite.modules.QuickSwitch;
 import org.slf4j.Logger;
 
 public class Addon extends MeteorAddon {
@@ -29,6 +26,8 @@ public class Addon extends MeteorAddon {
         Modules.get().add(new JumpBridge());
         Modules.get().add(new BlockPath());
         Modules.get().add(new QuickSwitch());
+        Modules.get().add(new OnHoldClicker());
+        Modules.get().add(new BlockIn());
 
         // Commands
         Commands.get().add(new CommandExample());
