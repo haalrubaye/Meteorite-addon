@@ -1,35 +1,19 @@
 package net.haalrubaye.meteorite.modules;
 
-import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
-import meteordevelopment.meteorclient.mixin.WorldRendererAccessor;
-import meteordevelopment.meteorclient.renderer.ShapeMode;
 import meteordevelopment.meteorclient.settings.*;
-import meteordevelopment.meteorclient.systems.modules.Categories;
-import net.haalrubaye.meteorite.Addon;
 import meteordevelopment.meteorclient.systems.modules.Module;
-import meteordevelopment.meteorclient.utils.player.*;
-import meteordevelopment.meteorclient.utils.render.color.Color;
-import meteordevelopment.meteorclient.utils.render.color.SettingColor;
+import meteordevelopment.meteorclient.utils.player.FindItemResult;
+import meteordevelopment.meteorclient.utils.player.InvUtils;
+import meteordevelopment.meteorclient.utils.player.PlayerUtils;
 import meteordevelopment.meteorclient.utils.world.BlockUtils;
 import meteordevelopment.meteorclient.utils.world.CardinalDirection;
-import meteordevelopment.meteorclient.utils.world.Dir;
 import meteordevelopment.orbit.EventHandler;
 import net.haalrubaye.meteorite.Addon;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.render.BlockBreakingInfo;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.decoration.EndCrystalEntity;
-import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
-import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 public class BlockIn extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();

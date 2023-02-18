@@ -1,17 +1,13 @@
 package net.haalrubaye.meteorite.modules;
 
 import meteordevelopment.meteorclient.events.world.TickEvent;
-import net.haalrubaye.meteorite.Addon;
+import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
-import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.meteorclient.utils.Utils;
-import meteordevelopment.meteorclient.settings.EnumSetting;
-import meteordevelopment.meteorclient.settings.IntSetting;
-import meteordevelopment.meteorclient.settings.Setting;
-import meteordevelopment.meteorclient.settings.SettingGroup;
-import meteordevelopment.meteorclient.settings.DoubleSetting;
-import net.minecraft.client.option.KeyBinding;
 import meteordevelopment.meteorclient.utils.misc.input.Input;
+import meteordevelopment.orbit.EventHandler;
+import net.haalrubaye.meteorite.Addon;
+import net.minecraft.client.option.KeyBinding;
 
 public class JumpBridge extends Module {
 
@@ -137,6 +133,17 @@ public class JumpBridge extends Module {
     @EventHandler
 
     private void onTick(TickEvent.Pre event) {
+
+        switch (yawLockMode.get()) {
+            case Simple -> setYawAngle(yawAngle.get().floatValue());
+            case Smart  -> setYawAngle(yawDirection);
+        }
+
+        switch (pitchLockMode.get()) {
+            case Simple -> mc.player.setPitch(pitchAngle.get().floatValue());
+            case Smart  -> mc.player.setPitch(getSmartPitchDirection());
+        }
+
         if (mc.world.getBlockState(mc.player.getSteppingPos()).isAir()) {
             if (mc.player.isOnGround()) {
                 turn = true;
@@ -169,16 +176,6 @@ public class JumpBridge extends Module {
                     timer = 0;
                 }
                 break;
-        }
-
-        switch (yawLockMode.get()) {
-            case Simple -> setYawAngle(yawAngle.get().floatValue());
-            case Smart  -> setYawAngle(yawDirection);
-        }
-
-        switch (pitchLockMode.get()) {
-            case Simple -> mc.player.setPitch(pitchAngle.get().floatValue());
-            case Smart  -> mc.player.setPitch(getSmartPitchDirection());
         }
 
         setPressed(mc.options.backKey, true);

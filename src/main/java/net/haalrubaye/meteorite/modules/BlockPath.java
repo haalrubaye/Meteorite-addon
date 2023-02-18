@@ -1,24 +1,21 @@
 package net.haalrubaye.meteorite.modules;
 
-import meteordevelopment.meteorclient.utils.Utils;
-import meteordevelopment.meteorclient.utils.player.InvUtils;
-import net.haalrubaye.meteorite.Addon;
-
 import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.friends.Friends;
-import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.meteorclient.utils.entity.EntityUtils;
 import meteordevelopment.meteorclient.utils.entity.SortPriority;
-import meteordevelopment.meteorclient.utils.entity.Target;
 import meteordevelopment.meteorclient.utils.entity.TargetUtils;
 import meteordevelopment.meteorclient.utils.misc.Vec3;
+import meteordevelopment.meteorclient.utils.player.InvUtils;
 import meteordevelopment.meteorclient.utils.player.PlayerUtils;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.block.*;
+import net.haalrubaye.meteorite.Addon;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
