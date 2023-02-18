@@ -9,7 +9,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.haalrubaye.meteorite.Addon;
 import net.minecraft.client.option.KeyBinding;
 
-public class AutoBridge extends Module {
+public class QuickJumpBridge extends Module {
 
     public enum Mode {
         Hold,
@@ -52,15 +52,20 @@ public class AutoBridge extends Module {
         .build()
     );
 
-    public AutoBridge() {
-        super(Addon.CATEGORY, "AutoBridge", "Automatically bridge in the direction you are looking.");
+    public QuickJumpBridge() {
+        super(Addon.CATEGORY, "QuickJumpBridge", "Automatically bridgejumps in the direction you are looking.");
     }
 
     private int timer;
     private float yawDirection;
 
+    boolean turn;
+    int blockCount;
+
     @Override
     public void onActivate() {
+        turn = true;
+        blockCount = 0;
         yawDirection = getSmartYawDirection();
         timer = 0;
         mc.options.attackKey.setPressed(false);
@@ -114,7 +119,6 @@ public class AutoBridge extends Module {
         .build()
     );
 
-    boolean turn = true;
     @EventHandler
 
     private void onTick(TickEvent.Pre event) {
@@ -129,15 +133,7 @@ public class AutoBridge extends Module {
             case Smart  -> mc.player.setPitch(getSmartPitchDirection());
         }
 
-        if (mc.world.getBlockState(mc.player.getSteppingPos()).isAir()) {
-            if (mc.player.isOnGround()) {
-            turn = true;
-            mc.options.sneakKey.setPressed(true);
-            }
-        } else if (turn) {
-            turn = false;
-            mc.options.sneakKey.setPressed(false);
-        }
+
 
         switch (mode.get()) {
             case Hold:
@@ -156,6 +152,10 @@ public class AutoBridge extends Module {
                     timer = 0;
                 }
                 break;
+        }
+
+        if (mc.player.isOnGround()){
+            mc.player.jump();
         }
 
         setPressed(mc.options.backKey, true);
